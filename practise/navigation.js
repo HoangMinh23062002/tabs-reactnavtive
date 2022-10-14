@@ -4,15 +4,14 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 const FirstScreen = () => {
-  const [flexDirection, setflexDirection] = useState("column");
+  const [direction, setDirection] = useState("ltr");
 
   return (
     <PreviewLayout
-      label="flexDirection"
-      values={["column", "row", "row-reverse", "column-reverse"]}
-      selectedValue={flexDirection}
-      setSelectedValue={setflexDirection}
-    >
+      label="direction"
+      selectedValue={direction}
+      values={["ltr", "rtl"]}
+      setSelectedValue={setDirection}>
       <View
         style={[styles.box, { backgroundColor: "powderblue" }]}
       />
