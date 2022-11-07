@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 // import styles from'../assets/style/pageStyle'
 
-const detailDisplay = () => {
+const DetailDisplay = () => {
   return (
     <View style={styles.container}>
       {/* <Image
@@ -139,4 +139,4 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
   },
 });
-export default detailDisplay;
+export default DetailDisplay;

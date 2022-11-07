@@ -233,8 +233,21 @@ import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import DisplayAnImage from './product/components/page';
-import detailDisplay from './product/components/detail';
+import DetailDisplay from './product/components/detail';
+import DetailProfile from './product/components/bottomBar';
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import Map from './product/components/Map';
+
+
+
 function HomeScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Home!</Text>
+    </View>
+  );
+}
+function profileScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Home!</Text>
@@ -255,9 +268,40 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator vigator
+        // screenOptions={{ header: () => null }}
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, size, color }) => {
+            let iconName;
+            if (route.name === "Home") {
+              iconName = "home";
+              size = focused ? 25 : 20;
+         
+            } else if (route.name === "Profile") {
+              iconName = "user";
+              size = focused ? 25 : 20;
+
+            } else if (route.name === "Detail") {
+              iconName = "cart-plus";
+              size = focused ? 25 : 20;
+            
+            }
+            return <FontAwesome5 name={iconName} size={size} color={color} />;
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: "white",
+          activeBackgroundColor: "lightgray",
+          inactiveTintColor: "#555",
+          inactiveBackgroundColor: "white",
+          showLabel: true,
+          labelStyle: { fontSize: 14 },
+        }}
+      >
         <Tab.Screen name="Home" component={DisplayAnImage} />
-        <Tab.Screen name="Settings" component={detailDisplay} />
+        <Tab.Screen name="Detail" component={DetailDisplay} />
+        <Tab.Screen name="Profile" component={DetailProfile} />
+        <Tab.Screen name="Map" component={Map} />
       </Tab.Navigator>
     </NavigationContainer>
   );
